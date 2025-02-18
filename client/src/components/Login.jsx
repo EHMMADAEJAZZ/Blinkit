@@ -13,8 +13,8 @@ const Login = () => {
    const [isError, setIsError] = useState('')
    const [showPassword, setShowPassword] = useState(false)
   const [user, setUser] = useState({
-    email: 'ehmmadaejazz33@gmail.com',
-    password: 'Aa@123123',
+    email: '',
+    password: '',
   })
   const dispatch=useDispatch()
   const navigate = useNavigate()
