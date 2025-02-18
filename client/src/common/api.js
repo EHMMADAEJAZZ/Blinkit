@@ -58,7 +58,6 @@ const api = {
         `${userEndPoint.users}/login`,
         userData
       );
-      console.log(response?.data)
       localStorage.setItem('accessToken', response?.data?.data?.accessToken);
       localStorage.setItem('refreshTtoken', response?.data?.data?.refreshToken);
 
@@ -186,7 +185,6 @@ Axios.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.error('Request failed:', error);
     return Promise.reject(error);
   }
 );
@@ -249,7 +247,6 @@ export const categoryApi = {
   },
   //update category
   updateCategory: async (categoryId, formdata) => {
-    console.log(categoryId);
     try {
       const response = await Axios.put(
         `${categoryEndpoints.category}/categories/${categoryId}`,
