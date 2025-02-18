@@ -18,7 +18,7 @@ const Profile = () => {
   
  
   return (
-    <div className='px-2 '>
+    <div className='max-h-[69.9vh] p-2 sm:p-4 overflow-hidden overflow-y-scroll'>
       <div className='w-20 h-20 bg-slate-300 rounded-full flex justify-center items-center overflow-hidden drop-shadow-lg border border-gray-400'>
         {userDetails?.avatar ? (
           <img

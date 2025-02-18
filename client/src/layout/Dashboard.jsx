@@ -7,7 +7,7 @@ const Dashboard = () => {
         <div className="w-full py-2  min-h-[80dvh] bg-white  grid  lg:grid-cols-[250px,1fr]">
           {/* menu */}
           <div className="pl-4 overflow-hidden   border-r-2 border-r-gray-300 hidden lg:block">
-            <UserMenu/>
+            <UserMenu />
           </div>
           {/* content */}
           <div className="max-h-[80dhv]  overflow-hidden overflow-y-scroll scrollbar-none ">

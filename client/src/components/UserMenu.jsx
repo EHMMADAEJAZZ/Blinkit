@@ -7,7 +7,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { UseGlobalContext } from "../context/globalContext";
-const UserMenu = ({handleClose}) => {
+const UserMenu = ({handleClose=()=>{}}) => {
     const [isLoading, setIsLoading] = useState(false)
   const {userDetails}=  useSelector((state)=>state.user);
   const {handleClearCart} = UseGlobalContext()
