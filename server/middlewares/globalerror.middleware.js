@@ -27,7 +27,7 @@ const gloalErrorMiddleware = (err, req, res, next) => {
         success:err.success,
         message:err.message,
         errors:err,
-        stack:process.env.NODE_ENV === 'development'?err.stack:null,
+        stack:process.env.NODE_ENV === 'development' ? err.stack:null,
   });
 };
 

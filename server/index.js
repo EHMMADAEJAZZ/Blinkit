@@ -11,7 +11,7 @@ import { ApiErrors } from './utils/apiErrors.js';
 import gloalErrorMiddleware from './middlewares/globalerror.middleware.js';
 import connectDB from './config.js/configDB.js';
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6000;
 const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per windowMs
