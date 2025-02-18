@@ -33,7 +33,10 @@ const ChangePassword = () => {
         const data = await api.changeCurrentPassword(newPassword);
         toast.success(data?.message)
     } catch (error) {
-        toast.error(error?.message)
+        if(error?.message){
+
+        toast.error(error?.message);
+      }
     }finally{
         setIsLoading(false);
     }

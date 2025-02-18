@@ -35,7 +35,10 @@ const CategoryListingPage = () => {
       setData(response?.data?.data);
       setTotalPages(Math.ceil(response?.data?.totalDocuments / limit));
     } catch (error) {
-      toast.error(error?.message);
+     if(error?.message){
+
+        toast.error(error?.message);
+      }
     } finally {
       setIsLoading(false);
     }

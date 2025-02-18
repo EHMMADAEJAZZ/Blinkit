@@ -1,16 +1,14 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 // 'https://blinkit-grocery.vercel.app/api/v1'
 const Axios = axios.create({
-  baseURL: 'https://blinkit-grocery.vercel.app/api/v1',
+  baseURL: 'http://localhost:5000/api/v1',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
   },
-  
-  
 });
-
 
 const userEndPoint = {
   users: '/user',
@@ -23,6 +21,9 @@ const api = {
       const response = await Axios.get(userEndPoint.users);
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -33,6 +34,9 @@ const api = {
       const response = await Axios.get(`${userEndPoint.users}/${userId}`);
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -46,6 +50,9 @@ const api = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -61,6 +68,10 @@ const api = {
 
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
+
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -72,6 +83,9 @@ const api = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -86,6 +100,9 @@ const api = {
 
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -98,6 +115,9 @@ const api = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -111,6 +131,9 @@ const api = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -123,6 +146,9 @@ const api = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -135,6 +161,9 @@ const api = {
       localStorage.setItem('accessToken', accessToken);
       return accessToken;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -160,6 +189,9 @@ const api = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -173,6 +205,9 @@ const api = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -232,6 +267,9 @@ export const categoryApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -244,6 +282,9 @@ export const categoryApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -261,6 +302,9 @@ export const categoryApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -272,6 +316,9 @@ export const categoryApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -290,6 +337,9 @@ export const categoryApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -506,6 +556,9 @@ export const cartApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -516,6 +569,9 @@ export const cartApi = {
       const response = await Axios.get(`${cartEndpoints.cart}/cart-items`);
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -529,6 +585,9 @@ export const cartApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -541,12 +600,14 @@ export const cartApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
 
   //apply coupon
-
 };
 
 //ADDRESS END POINTS
@@ -564,6 +625,9 @@ export const addressApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -574,6 +638,9 @@ export const addressApi = {
       const response = await Axios.get(`${addressEndpoints.address}/addresses`);
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -587,6 +654,9 @@ export const addressApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -599,6 +669,9 @@ export const addressApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -610,6 +683,9 @@ export const addressApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -621,6 +697,9 @@ export const addressApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -632,36 +711,52 @@ export const addressApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
-}
+};
 const orderEndpoints = {
   order: '/order',
 };
 
 export const orderApi = {
   //place order cashOnDeliveryOrder
-  cashOnDeliveryOrder: async (cartItems, shippingAddressId,totalAmount) => {
+  cashOnDeliveryOrder: async (cartItems, shippingAddressId, totalAmount) => {
     try {
       const response = await Axios.post(
         `${orderEndpoints.order}/place-order-cash-on-delivery`,
-        { cartItems, shippingAddressId ,totalAmount}
+        { cartItems, shippingAddressId, totalAmount }
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
- //place order onLinePaymentOrder
-  onLinePaymentOrder: async (cartItems, shippingAddressId, totalAmount, paymentMethodId='1234') => {
+  //place order onLinePaymentOrder
+  onLinePaymentOrder: async (
+    cartItems,
+    shippingAddressId,
+    totalAmount,
+    paymentMethodId = '1234'
+  ) => {
     try {
-      const response = await Axios.post(
-        `${orderEndpoints.order}/checkout`,
-        { cartItems, shippingAddressId, totalAmount, paymentMethodId }
-      );
+      const response = await Axios.post(`${orderEndpoints.order}/checkout`, {
+        cartItems,
+        shippingAddressId,
+        totalAmount,
+        paymentMethodId,
+      });
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -669,7 +764,9 @@ export const orderApi = {
   //fetch order by id
   fetchOrderById: async (orderId) => {
     try {
-      const response = await Axios.get(`${orderEndpoints.order}/orders/${orderId}`);
+      const response = await Axios.get(
+        `${orderEndpoints.order}/orders/${orderId}`
+      );
       return response.data;
     } catch (error) {
       throw new Error(error?.response?.data?.message);
@@ -678,9 +775,7 @@ export const orderApi = {
   //fetch user orders
   fetchUserOrders: async () => {
     try {
-      const response = await Axios.get(
-        `${orderEndpoints.order}/orders/user`
-      );
+      const response = await Axios.get(`${orderEndpoints.order}/orders/user`);
       return response.data;
     } catch (error) {
       throw new Error(error?.response?.data?.message);
@@ -694,6 +789,9 @@ export const orderApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
@@ -705,9 +803,12 @@ export const orderApi = {
       );
       return response.data;
     } catch (error) {
+      if (error?.status === 429) {
+        toast.error(error?.response?.data);
+      }
       throw new Error(error?.response?.data?.message);
     }
   },
 
   //fetch order by id
-}
+};

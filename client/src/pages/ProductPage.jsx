@@ -81,7 +81,10 @@ const [openConfirmBox, setOpenConfirmBox] = useState(false);
       const res= await productApi.deleteProduct(id);
       toast.success(res?.message)
     } catch (error) {
-      toast.error(error?.message)
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
       
     }finally{
       setIsDeleting(false);

@@ -18,7 +18,9 @@ export const GlobalProvider = ({ children }) => {
       const data = await cartApi.fetchCartItems();
       dispatch(setCart(data?.data));
     } catch (error) {
-       throw new Error(error?.message)
+      if (error?.message) {
+        throw new Error(error?.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -31,7 +33,9 @@ export const GlobalProvider = ({ children }) => {
       toast.success(res?.message);
       fetchCartItems();
     } catch (error) {
-       throw new Error(error?.message)
+      if (error?.message) {
+        throw new Error(error?.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -45,7 +49,9 @@ export const GlobalProvider = ({ children }) => {
       toast.success(res?.message);
       fetchCartItems();
     } catch (error) {
-       throw new Error(error?.message)
+      if (error?.message) {
+        throw new Error(error?.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -62,7 +68,9 @@ export const GlobalProvider = ({ children }) => {
       const data = await addressApi.fetchAddresses();
       dispatch(addAddress(data?.data));
     } catch (error) {
-      throw new Error(error?.message)
+      if (error?.message) {
+        throw new Error(error?.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -73,7 +81,9 @@ export const GlobalProvider = ({ children }) => {
       const data = await orderApi.fetchUserOrders();
       dispatch(handleOrders(data?.data));
     } catch (error) {
-      throw new Error(error?.message)
+      if (error?.message) {
+        throw new Error(error?.message);
+      }
     } finally {
       setLoading(false);
     }

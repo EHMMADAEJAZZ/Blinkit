@@ -76,7 +76,10 @@ const EditAddress = ({ onCloseModel,addressData }) => {
       });
       onCloseModel();
     } catch (error) {
-      toast.error(error?.message);
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
     } finally {
       setLoading(false);
     }

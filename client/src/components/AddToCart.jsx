@@ -21,7 +21,10 @@ const AddToCart = ({data,label='Add'}) => {
       toast.success(response?.message)
       fetchCartItems()
     } catch (error) {
-      toast.error(error?.message)
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
     }finally{
       setIsLoading(false);
     }
