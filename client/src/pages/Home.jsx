@@ -39,7 +39,7 @@ const Home = () => {
       </div>
       <div className="container mx-auto px-4 my-4 grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4 py-5">
         {
-         categoryLoading?(<CategoryHomeSkeleton/>):(
+         categoryLoading?<CategoryHomeSkeleton/>:(
            allCategories.map((category,index)=>(
              <div key={index} className="w-full min-h-36 max-h-36 overflow-hidden p-1 cursor-pointer" onClick={()=>handeRedirect(category._id,category.name)}>
                <div>
