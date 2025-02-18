@@ -59,11 +59,14 @@ const Search = () => {
     setCurrentPage((prev) => prev - 1);
   };
   if(isLoading){
-    return <div className="flex justify-center items-center h-full">
-      <div className="spinner-border text-primary" role="status">
+    return (
+      <section className=' w-full scrollbar-none scroll-smooth'>
+      <div className='fixted w-full top-0  min-h-[82vh] scrollbar-none scroll-smooth'>
+       <div className='mt-7 sm:mt-16 max-h-[65vh] sm:max-h-[65vh] overflow-hidden overflow-y-auto scrollbar-none scroll-smooth grid justify-items-center grid-cols-1 gap-1  sm:grid-cols-3 scroll-none md:grid-cols-4 lg:grid-cols-5 sm:gap-4 lg:gap-5  p-4'>
         <CategorySlide length={20} />
-      </div>
     </div>
+    </div>
+    </section>)
   }
   return (
     <section className=' w-full scrollbar-none scroll-smooth'>
