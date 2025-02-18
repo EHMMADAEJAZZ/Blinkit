@@ -92,7 +92,7 @@ const Search = () => {
               }
             </>
             <>
-              {  !data.length  && (<NoData label={message}/>)
+              {  !data  && (<NoData label={message}/>)
               }
             </>
           
