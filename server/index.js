@@ -24,6 +24,11 @@ app.use(
     methods: ['GET', 'POST', 'PUT','PATCH', 'DELETE', 'OPTIONS'],
   })
 );
+import fs from "fs";
+const dir = './public';
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir);
+}
 app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
 app.use(express.static('public'));
@@ -37,6 +42,7 @@ app.use(morgan('dev'));
 
 // Set up routes
 // import routes from
+
 import userRoute from './routes/user.route.js';
 import adminRoute from './routes/admin.route.js';
 import categoryRoute from './routes/category.route.js';
