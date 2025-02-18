@@ -84,7 +84,7 @@ const AddAddress = ({ onCloseModel }) => {
   return (
     <section className='bg-black bg-opacity-70 fixed top-0 bottom-0 left-0 right-0 z-50 backdrop-blur-md'>
       <div className='bg-white p-4 w-full max-w-lg mx-auto rounded mt-8 max-h-[75vh] sm:max-h-[75vh] overflow-hidden overflow-y-scroll customscrollbar relative  '>
-        <div className=''>
+        <div>
           <button
             onClick={onCloseModel}
             className='w-fit block ml-auto text-white bg-black rounded-full hover:text-red-500 hover:bg-red-600 transition-all duration-300 hover:scale-110'
