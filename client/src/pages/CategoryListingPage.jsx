@@ -37,7 +37,6 @@ const CategoryListingPage = () => {
       setData(response?.data?.data);
       setTotalPages(Math.ceil(response?.data?.totalDocuments / limit));
     } catch (error) {
-      console.error(error?.message);
       toast.error(error?.message);
     } finally {
       setIsLoading(false);
@@ -70,30 +69,30 @@ const CategoryListingPage = () => {
   
   return (
     <section className=''>
-      <div className='fixed top-28 sm:top-20 w-full grid grid-cols-[200px_1fr] min-h-[82vh]  max-h-[82vh]'>
-        <div className='max-h-[75vh] sm:min-h-[82vh]  sm:max-h-[82vh] sm:p-2 border-r-2 z-50 shadow-slate-400/40 shadow-2xl overflow-hidden overflow-y-scroll customscrollbar  grid gap-4'>
+      <div className='fixed top-28 sm:top-20 w-full grid grid-cols-[120px_1fr] sm:grid-cols-[200px_1fr] min-h-[82vh]  max-h-[82vh]'>
+        <div className='max-h-[75vh] sm:min-h-[82vh]  sm:max-h-[82vh] py-4 sm:p-2 border-r-2 z-50 shadow-slate-400/40 shadow-2xl overflow-hidden overflow-y-scroll customscrollbar  grid gap-4'>
         
           {
             sub.map((s,index)=>{
              
               return(
               
-              <Link to={`/${category}/${s?.category[0]._id}/${s._id}`} key={index} className={`w-full flex flex-col lg:flex-row items-center cursor-pointer p-2 shadow-lg gap-2 border-b-2 ${subcategoryId===s._id?"bg-green-200":"bg-white"} hover:bg-green-600/30`}>
-                <div className={`max-w-12 min-w-16 mx-auto lg:mx-0  `}>
+              <Link to={`/${category}/${s?.category[0]._id}/${s._id}`} key={index} className={`w-full flex flex-col lg:flex-row items-center cursor-pointer p-4 sm:p-2 shadow-lg gap-2 border-b-2 ${subcategoryId===s._id?"bg-green-200":"bg-white"} hover:bg-green-600/30`}>
+                <div className={`max-w-12 min-w-16 mx-auto lg:mx-0 max-sm:hidden `}>
                   <img src={s.image} alt={s?.name} className='w-16 h-16 object-scale-down' />
                 </div>
-                <p className='text-xs  text-center lg:text-left -mt-3'>{s?.name}</p>
+                <p className='text-xs text-wrap   text-center lg:text-left -mt-3'>{s?.name}</p>
               </Link>
             )})
           }
         
         </div>
         {/* poducts */}
-        <div className='  max-h-[82vh]  '>
+        <div className=' max-h-[82vh]  '>
            <div className='bg-white shadow-lg p-4'>
                   <h3 className='text-base sm:text-xl font-semibold'> {subcategoryName}</h3>
                 </div>
-          <div className={`max-h-[65vh] sm:min-h-[70vh] sm:max-h-[69vh]   overflow-hidden overflow-y-scroll scrollbar-none  grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 p-4`}>
+          <div className={`max-h-[65vh] sm:min-h-[70vh] sm:max-h-[69vh]   overflow-hidden overflow-y-scroll scrollbar-none  grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 p-4 justify-items-center`}>
             {isLoading &&
               [...Array(24)].map((_, i) => <ProductCartSkeleton key={i} />)}
               
@@ -117,17 +116,7 @@ const CategoryListingPage = () => {
             prev
           </button>
           <div className=' items-center flex  gap-1 '>
-            {/* {new Array(totalPages).fill('').map((_, index) => (
-              <span
-                onClick={() => handlePageChange(index + 1)}
-                className={`w-7 text-center text-white  rounded block ${
-                  currentPage === index + 1 ? 'bg-red-600 cursor-not-allowed' : 'bg-gray-700/50 cursor-pointer'
-                }`}
-                key={index}
-              >
-                {index + 1}
-              </span>
-            ))} */}
+          
               <span className='text-sm sm:text-lg text-gray-800'>{currentPage} / {totalPages}</span>
           </div>
           <button

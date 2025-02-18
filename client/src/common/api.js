@@ -1,4 +1,5 @@
 import axios from 'axios';
+// 'https://blinkit-grocery.vercel.app/api/v1'
 const Axios = axios.create({
   baseURL: 'https://blinkit-grocery.vercel.app/api/v1',
   withCredentials: true,

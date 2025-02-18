@@ -13,7 +13,7 @@ const CardProduct = ({ data }) => {
   return (
     <Link
       to={`/product/${url}`}
-      className='min-h-72 max-h-[320px] border p-2 grid gap-2 w-full  min-w-[200px] overflow-hidden shadow-lg max-w-[200px] '
+      className='min-h-72 max-h-[320px] border p-2 grid gap-2 w-full min-w-[200px] overflow-hidden shadow-lg max-w-[250px] '
     >
       <div className='w-full h-32 rounded p-2'>
         <img
