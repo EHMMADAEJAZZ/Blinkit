@@ -1,7 +1,7 @@
 import banner from "../assets/banner.jpg";
 import bannerMobile from "../assets/banner-mobile.jpg";
 import { useSelector } from "react-redux";
-import CategoryHomeSkeleton from "../skeleton/categoryHomeSkeleton";
+import CategoryHomeSkeleton from "../skeleton/CategoryHomeSkeleton.jsx";
 import validUrl from "../utils/createValidUrl";
 import { useNavigate } from "react-router-dom";
 import CategoryWiseProducts from "../components/CategoryWiseProducts";
