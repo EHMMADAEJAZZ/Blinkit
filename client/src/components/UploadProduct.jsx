@@ -3,7 +3,7 @@ import InputText from '../UI/InputText';
 import TextArea from '../UI/TextArea';
 import ImageInput from '../UI/ImageInput';
 import SelectInput from '../UI/SelectInput';
-import CheckBox from '../UI/Checkbox.jsx';
+import CheckBox from '../UI/CheckBox';
 import ImagePreview from './ImagePreview';
 import { MdOutlineCloudUpload } from 'react-icons/md';
 import Divider from './Divider';
