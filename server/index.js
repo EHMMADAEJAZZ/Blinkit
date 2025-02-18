@@ -24,11 +24,7 @@ app.use(
     methods: ['GET', 'POST', 'PUT','PATCH', 'DELETE', 'OPTIONS'],
   })
 );
-import fs from "fs";
-const dir = './public';
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir);
-}
+
 app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
 app.use(express.static('public'));
