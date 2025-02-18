@@ -11,15 +11,22 @@ export const uploadAvatar = async (req, res, next) => {
     if (!avatarPath) {
       return next(new ApiErrors(400, 'Avator not found'));
     }
-    const avatarUlr = await uploadOnCloudinary(avatarPath);
-
     const userId = req.user._id;
-    if (req.user.avatar) {
-      await deleteOnCloudinary(req.user.avatar);
+    let avatarUlr
+    
+    if(process.env.NODE_ENV !== 'production' && avatarPath) {
+       avatarUlr = await uploadOnCloudinary(avatarPath);
+      if (req.user.avatar) {
+        await deleteOnCloudinary(req.user.avatar);
+      }
     }
+    if (avatarPath && req.user.avatar) {
+        await deleteOnCloudinary(req.user.avatar);
+      }
+
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { $set: { avatar: avatarUlr ? avatarUlr.secure_url : null } },
+      { $set: { avatar: avatarUlr ? avatarUlr.secure_url : avatarPath } },
       { new: true }
     );
     return res

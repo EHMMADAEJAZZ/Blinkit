@@ -12,10 +12,14 @@ export const AddCategory = async (req, res, next) => {
     if (!imagePath || !name) {
       return next(new ApiErrors(400, 'All fields are required'));
     }
-    const imageUlr = await uploadOnCloudinary(imagePath);
+    let imageUlr;
+    if(process.env.NODE_ENV !== 'production') {
+
+       imageUlr = await uploadOnCloudinary(imagePath);
+    }
     const category = await Category.create({
       name,
-      image: imageUlr.secure_url,
+      image:imageUlr? imageUlr.secure_url:imagePath,
     });
     return res
       .status(201)
@@ -48,7 +52,7 @@ export const updateCategory = async (req, res, next) => {
     return next(new ApiErrors(400, 'All fields are required'));
   }
   let imageUlr;
-  if (req.file?.path) {
+  if (process.env.NODE_ENV !=='production' && req.file?.path) {
     imageUlr = await uploadOnCloudinary(imagePath);
   }
 
@@ -61,7 +65,7 @@ export const updateCategory = async (req, res, next) => {
       {
         $set: {
           name,
-          image: imageUlr ? imageUlr.secure_url : image,
+          image: imageUlr ? imageUlr.secure_url : imagePath || image,
         },
       },
       {

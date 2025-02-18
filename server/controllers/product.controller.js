@@ -37,13 +37,19 @@ export const addProduct = async (req, res, next) => {
         new ApiErrors(400, 'All fields must be specified and not empty')
       );
     }
+    let uploadedImages;
+    if (process.env.NODE_ENV !== 'production') {
+      uploadedImages = await Promise.all(
+        images.map(async (image) => {
+          const img = await uploadOnCloudinary(image.path);
+          return img.secure_url;
+        })
+      );
+    }
+    uploadedImages = images.map((image) => {
+      return image.path;
+    });
 
-    const uploadedImages = await Promise.all(
-      images.map(async (image) => {
-        const img = await uploadOnCloudinary(image.path);
-        return img.secure_url;
-      })
-    );
     const product = await Product.create({
       name,
       price,
@@ -266,12 +272,18 @@ export const editProduct = async (req, res, next) => {
         })
       );
       //upload new images to cloudinary
-      await Promise.all(
+      if (process.env.NODE_ENV !== 'production') {
+        await Promise.all(
+          newImages.map(async (image) => {
+            const img = await uploadOnCloudinary(image.path);
+            product.images.push(img.secure_url);
+          })
+        );
+      } else {
         newImages.map(async (image) => {
-          const img = await uploadOnCloudinary(image.path);
-          product.images.push(img.secure_url);
-        })
-      );
+          product.images.push(image.path);
+        });
+      }
     } else {
       product.images = images;
     }
@@ -335,7 +347,7 @@ export const deleteProduct = async (req, res, next) => {
 //search products with pagenation limit
 export const searchProducts = async (req, res, next) => {
   try {
-    const { search ='', page = 1, limit = 10 } = req.query;
+    const { search = '', page = 1, limit = 10 } = req.query;
     const query = search
       ? {
           $text: {

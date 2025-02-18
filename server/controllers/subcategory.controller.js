@@ -11,10 +11,14 @@ export const addSubCategory = async (req, res, next) => {
     if (!categoryIds[0] || !name || !imagePath) {
       return next(new ApiErrors(400, 'All fields are required'));
     }
-    const imageUlr = await uploadOnCloudinary(imagePath);
+    let imageUlr;
+    if(process.env.NODE_ENV !== 'production') {
+
+      imageUlr = await uploadOnCloudinary(imagePath);
+    }
     const subcategory = await SubCategory.create({
       name,
-      image: imageUlr.secure_url,
+      image: imageUlr?imageUlr.secure_url:imagePath,
       category:categoryIds
     });
     return res
@@ -40,16 +44,20 @@ export const fetchSubCategories=async (req, res, next) => {
 export const updateSubCategory = async (req, res, next) => {
   try {
     const {subcategoryId} = req.params;
-    const { name ,category,image} = req.body;
+    const { name ,category} = req.body;
     const categoryIds = category.split(',')
     let imagePath=req.file?.path;
     let imageUrl;
     const subcategory = await SubCategory.findById(subcategoryId);
+    const image = subcategory?.image;
     if (!subcategory) {
       return next(new ApiErrors(404, 'Subcategory not found'));
     }
-    if(imagePath && subcategory){
+    if(imagePath && subcategory && process.env.NODE_ENV !== 'production'){
       imageUrl = await uploadOnCloudinary(imagePath);
+      await deleteOnCloudinary(subcategory.image);
+    }
+    if(imagePath && subcategory && process.env.NODE_ENV === 'production'){
       await deleteOnCloudinary(subcategory.image);
     }
     if (!subcategoryId || !name || (!image && !imageUrl)) {
@@ -57,7 +65,7 @@ export const updateSubCategory = async (req, res, next) => {
     }
     const updatedsubcategory = await SubCategory.findByIdAndUpdate(subcategoryId, {
       name,
-      image: imageUrl? imageUrl.secure_url: image,
+      image: imageUrl? imageUrl.secure_url:imagePath || image,
       category: categoryIds
     }, {new: true,runValidators:true});
     
