@@ -1,19 +1,17 @@
 import axios from 'axios';
-
+// 'https://blinkit-grocery.vercel.app/api/v1'
 const Axios = axios.create({
-   baseURL: 'https://blinkit-grocery.vercel.app/api/v1',
+  baseURL: 'http://localhost:5000/api/v1',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
   },
   
-  // Add your own interceptor here to add or modify the request headers or handle errors
+  
 });
 
-//send access token in hearder
 
-// Define the API endpoints
 const userEndPoint = {
   users: '/user',
 };
