@@ -33,7 +33,7 @@ const InputText = ({
         />
         {
           icon && (
-            <div className='absolute right-0 top-2 pr-2'>
+            <div className='absolute right-0 top-2 pr-2 cursor-pointer'>
               {
                 icon
               }

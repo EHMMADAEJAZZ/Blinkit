@@ -22,7 +22,7 @@ const CategoryWiseProducts = ({categoryId,categoryName}) => {
             const response = await productApi.fetchProductsByCategory(categoryId)
             setCategoryData(response?.data?.data)
          } catch (error) {
-            console.error('Error fetching data:', error?.message)
+            throw new Error(error?.message)
          }finally{
             setIsLoading(false)
          }

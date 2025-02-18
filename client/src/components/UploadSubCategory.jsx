@@ -66,7 +66,6 @@ const UploadSubCategory = ({ closeModel,fetchSubCategory }) => {
       fetchSubCategory()
     } catch (error) {
       toast.error(error?.message);
-      console.log(error?.message);
     } finally {
       setIsLoading(false);
     }

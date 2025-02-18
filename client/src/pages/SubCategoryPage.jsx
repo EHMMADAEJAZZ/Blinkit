@@ -17,8 +17,7 @@ const SubCategoryPage = () => {
         try {
           const data = await subcategoryApis.fetchSubCategories();
           setSubCategories(data?.data);
-          // toast.success(data?.message)
-          // console.log(data?.data?.length);
+          
         } catch (error) {
           toast.error(error?.message)
         }finally{

@@ -14,9 +14,7 @@ const CategoryListingPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const { allSubCategories } = useSelector((state) => state.subCategory);
-  console.log(allSubCategories);
   const {categoryId,subcategoryId,category} = useParams();
-  // console.log(id.split()[0]);
   const subcategory = allSubCategories.find((sub) => {
     const filtered = sub.category.some((cat) => {
       return cat._id === categoryId;
@@ -47,7 +45,6 @@ const CategoryListingPage = () => {
       return cat._id === categoryId
     });
   })
-  console.log(categoryId,sub)
   useEffect(() => {
     fetchData();
   }, [categoryId,subcategoryId]);

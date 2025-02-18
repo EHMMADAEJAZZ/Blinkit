@@ -30,7 +30,6 @@ const Search = () => {
       setMessage(response?.message)
       setTotalPages(Math.ceil(response?.data?.totalDocuments / limit));
     } catch (error) {
-      console.log(error.message);
       toast.error(error?.message)
       setMessage(null);
     } finally {

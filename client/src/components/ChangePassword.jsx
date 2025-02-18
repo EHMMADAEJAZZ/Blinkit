@@ -29,12 +29,10 @@ const ChangePassword = () => {
       return;
     }
     setIsLoading(true)
-    console.log(newPassword)
     try {
         const data = await api.changeCurrentPassword(newPassword);
         toast.success(data?.message)
     } catch (error) {
-      console.log(error?.message)
         toast.error(error?.message)
     }finally{
         setIsLoading(false);

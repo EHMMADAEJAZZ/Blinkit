@@ -53,7 +53,6 @@ const Otp = ({ length, onComplete }) => {
       newOtps = clipBoardData.split('');
       setOtps(newOtps);
       const combinedOtps = newOtps.join('');
-      console.log(combinedOtps);
       if (combinedOtps.length === length) {
         onComplete(combinedOtps);
       }
@@ -65,7 +64,6 @@ const Otp = ({ length, onComplete }) => {
       inputRef.current[index - 1] &&
       inputRef.current[index - 1].value === ''
     ) {
-      console.log(otps.indexOf(''));
       inputRef.current[otps.indexOf('')].focus();
     }
     if (index < length - 1 && inputRef.current[index].value) {

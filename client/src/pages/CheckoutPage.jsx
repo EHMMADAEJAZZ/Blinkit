@@ -30,7 +30,6 @@ const CheckoutPage = () => {
   useEffect(() => {
     if (addreseList[0]) {
       const defaultAddress = addreseList?.findIndex((ad) => ad?.isDefault);
-      console.log(defaultAddress);
       setSelectedAddress(defaultAddress);
     }
     fetchAddresses();
@@ -72,7 +71,6 @@ const CheckoutPage = () => {
         shippingAddressId,
         totalAmount
       );
-      console.log(response.data)
       stripePromise.redirectToCheckout({sessionId:response.data.id})
       fetchCartItems();
      fetchOrders()

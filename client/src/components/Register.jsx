@@ -33,7 +33,6 @@ const Register = () => {
       setIsLoading(true);
       
       const data = await api.registerUser(user);
-      console.log(data);
       setIsLoading(false);
       setIsError('');
       toast.success(data.message)
@@ -52,7 +51,6 @@ const Register = () => {
       setIsLoading(false);
     }
   };
-  // console.log(errors)
   function validateInputs(values) {
     const error = {};
     if (!values.email) {

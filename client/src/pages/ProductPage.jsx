@@ -81,7 +81,6 @@ const [openConfirmBox, setOpenConfirmBox] = useState(false);
       const res= await productApi.deleteProduct(id);
       toast.success(res?.message)
     } catch (error) {
-      console.log(error?.message);
       toast.error(error?.message)
       
     }finally{
@@ -91,7 +90,6 @@ const [openConfirmBox, setOpenConfirmBox] = useState(false);
       
     };
      const handleDelete = (id) => {
-      console.log(id)
      toggleConfirmBox();
      SetDeleteId(id);
   };

@@ -20,14 +20,12 @@ const subCategorySlice = createSlice({
             state.allSubCategories.push(action.payload);
         },
         updateSubcategory(state, action) {
-            console.log(action.payload)
             const index = state.allSubCategories.findIndex(c => c._id === action.payload._id);
-            console.log(index)
             if(index > -1) {
                 state.allSubCategories[index] = action.payload;
             }
             else {
-                console.error('Subcategory not found');
+                throw new Error('Subcategory not found');
             }
 
         },
@@ -37,7 +35,7 @@ const subCategorySlice = createSlice({
                 state.allSubCategories.splice(index, 1);
             }
             else {
-                console.error('Subcategory not found');
+                throw new Error('Subcategory not found');
             }
         },
         clearSubcategories(state) {

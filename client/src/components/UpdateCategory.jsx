@@ -18,14 +18,12 @@ const UpdateCategory = ({ closeModel, data }) => {
     name: data?.name,
     image: data?.image,
   });
-console.log(data.image)
 const dispatch =useDispatch()
   const handleChangeCategory = (e) => {
     setCategory({ ...category, name: e.target.value });
   };
   const handleChangeFile = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     if (!file) {
       return;
     }
@@ -36,20 +34,17 @@ const dispatch =useDispatch()
   const handleCategory = async (e) => {
     e.preventDefault();
     setError(validateInputs(category));
-    console.log(category);
     setIsLoading(true);
     try {
       let formData = new FormData();
       formData.append('name', category.name);
       formData.append('image', category.image);
-      console.log(formData);
       const response = await categoryApi.updateCategory(data?._id,formData);
       toast.success(response?.message);
       dispatch(updateCategory(response?.data))
       closeModel();
     } catch (error) {
       toast.error(error?.message);
-      console.log(error?.message);
     } finally {
       setIsLoading(false);
     }

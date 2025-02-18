@@ -13,10 +13,8 @@ const UpdateProuct = () => {
           setisLoading(true);
           try {
             const response = await productApi.fetchProductDetails(id);
-            // console.log(response?.data);
             setProduct(response?.data);
           } catch (error) {
-            console.log(error?.message);
             toast.error(error?.message);
           } finally {
             setisLoading(false);

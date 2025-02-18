@@ -101,9 +101,10 @@ const Login = () => {
         // required={true}
         disabled={isLoading}
         onChange={handleChange}
-        icon={showPassword? <IoMdEyeOff size={25} color="white" onClick={()=>setShowPassword(false)} />: <IoMdEye size={25} color="white" onClick={()=>setShowPassword(true)}/>}
+        icon={showPassword?<IoMdEye size={25} color="red" onClick={()=>setShowPassword(false)} /> : <IoMdEyeOff size={25} color="red" onClick={()=>setShowPassword(true)}  />}
         
         />
+       
         {
           errors.password && <p className='error'>{errors.password}</p>
         }

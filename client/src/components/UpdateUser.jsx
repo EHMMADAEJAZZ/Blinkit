@@ -29,7 +29,6 @@ const UpdateUser = () => {
     setIsLoading(true)
     try {
         const data = await api.updateUser(user);
-      console.log(data);
       dispatch(fetchUserDetailsSuccess(data?.data))
       toast.success(data?.message);
 

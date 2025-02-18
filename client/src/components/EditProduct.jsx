@@ -94,9 +94,7 @@ const EditProduct = ({ data,fetchProduct }) => {
         return [...prev, URL.createObjectURL(image)];
       });
     });
-    // setPreview(img)
 
-    console.log(preview);
   };
 
   const handleDeleteImage = (index) => {

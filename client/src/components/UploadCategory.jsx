@@ -36,7 +36,6 @@ const UploadCategory = ({ closeModel }) => {
   
   const handleChangeFile = (e) => {
     const file = e.target.files[0];
-    console.log(file)
     if(!file){
       return;
     }
@@ -44,24 +43,20 @@ const UploadCategory = ({ closeModel }) => {
     const objectUrl = URL.createObjectURL(file);
     setPreview(objectUrl);
   };
-  console.log(preview)
   const handleCategory = async(e) => {
     e.preventDefault();
     setError(validateInputs(category));
-    console.log(category);
     setIsLoading(true);
     try {
       let formData = new FormData()
       formData.append('name', category.name);
       formData.append('image', category.image);
-      console.log(formData);
       const data = await categoryApi.addCategory(formData);
       toast.success(data?.message)
      dispatch(addCategory(data?.data))
       closeModel()
     } catch (error) {
       toast.error(error?.message)
-      console.log(error?.message);
     } finally {
       setIsLoading(false);
     }

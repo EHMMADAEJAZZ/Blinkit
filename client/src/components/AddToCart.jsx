@@ -21,7 +21,6 @@ const AddToCart = ({data,label='Add'}) => {
       toast.success(response?.message)
       fetchCartItems()
     } catch (error) {
-      console.error(error?.message);
       toast.error(error?.message)
     }finally{
       setIsLoading(false);
@@ -33,7 +32,6 @@ const AddToCart = ({data,label='Add'}) => {
     const product=cart?.find(item=>item?.productId?._id===data?._id)
     setQuantity(product?.quantity)
     setCartItemDetails(product)
-    // console.log("quantity",product)
  },[data,cart,quantity])
  const increaseQuantity=(e)=>{
     e.preventDefault();

@@ -10,15 +10,12 @@ const Verifyuser = () => {
     const handleVerifyUser =async(e)=>{
       e.preventDefault();
      const code = searchParams.get('code');
-     console.log(code)
      setIsLoading(true)
       try {
         const data = await api.verifyUser(code)
-        console.log(data);
         toast.success(data?.message)
         navigate('/')
       } catch (error) {
-        console.log(error)
         
         toast.error(error?.message)
       }finally{

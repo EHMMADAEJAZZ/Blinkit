@@ -18,7 +18,6 @@ const Home = () => {
     return filtered;
   });
   const url =validUrl(categoryName)
-  console.log(url)
   navigate(`/${url}/${categoryId}/${subcategory?._id}`)
   };
   return (

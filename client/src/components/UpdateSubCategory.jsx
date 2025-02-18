@@ -41,7 +41,6 @@ const [previewImg, setPreviewImg] = useState(null);
 
   const handleChangeFile = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     if (!file) {
       return;
     }
