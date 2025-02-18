@@ -37,16 +37,14 @@ const UserMenu = ({handleClose=()=>{}}) => {
       <p className="text-sm font-semibold max-w-52 text-ellipsis line-clamp-1 ">My Account</p>
       <div className="flex items-center gap-2 py-1">
         <p className="text-sm capitalize">{userDetails?.name} </p>
-       
-
-      
-        <Link to='/dashboard/profile' className="hover:text-orange-600"><HiOutlineExternalLink size={18}/></Link>
+        <Link to='/dashboard/profile' 
+        onClick={()=>handleClose()}className="hover:text-orange-600"><HiOutlineExternalLink size={18}/></Link>
         
       </div>
        <div className={`capitalize text-green-600 font-semibold tracking-widest ${isAdmin?"block":"hidden"}`}><span>{isAdmin?"admin":""}</span></div>
         
         <Divider/>
-        <div className="grid  text-sm capitalize ">
+        <div className="grid  text-sm capitalize " onClick={()=>handleClose()}>
           {
             userDetails?.role === 'admin' && (<>
             <Link to='/dashboard/category' className='hover:bg-orange-200 py-2 px-2' >category</Link>
