@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className='  w-full h-12 fixed bottom-0 z-30 bg-black text-white  px-4 py-2'>
-      <div className=" flex flex-col gap-4  sm:flex-row sm:justify-between sm:items-center">
-        <p className="text-gray-400 text-sm text-center">&copy; All Rights Reserved {new Date().getFullYear()} | Blinkit</p>
-        <div className="flex justify-center items-center gap-4 text-2xl sm:text-3xl">
+      <div className=" flex gap-4  justify-between items-center">
+        <p className="text-gray-400 max-[430px]:text-xs text-sm ">&copy; All Rights Reserved {new Date().getFullYear()} | Blinkit</p>
+        <div className="flex justify-center items-center gap-2 sm:gap-4">
           <Link to='' className="hover:text-primary-100">
-          <FaFacebook/>
+          <FaFacebook className="text-xl sm:text-2xl"/>
           </Link>
           <Link to='' className="hover:text-primary-100">
-          <FaInstagramSquare/>
+          <FaInstagramSquare  className="text-xl sm:text-2xl" />
           </Link>
           <Link to='' className="hover:text-primary-100">
-          <FaLinkedin/>
+          <FaLinkedin className="text-xl sm:text-2xl"/>
           </Link>
         </div>
       </div>
