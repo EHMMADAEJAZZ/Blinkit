@@ -16,7 +16,10 @@ const ConfirmBox = ({ closeModel, data }) => {
       closeModel();
       toast.success(response?.message);
     } catch (error) {
-      toast.error(error?.message);
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
     } finally {
       setDeleting(false);
     }

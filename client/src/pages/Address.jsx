@@ -45,7 +45,10 @@ const Address = () => {
       toast.success(res?.message);
       fetchAddresses();
     } catch (error) {
-      toast.error(error?.message);
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
     } finally {
       setDeleting(false);
     }

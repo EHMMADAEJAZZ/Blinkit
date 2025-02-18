@@ -34,7 +34,10 @@ const SubCategory = ({ data, isLoading, fetchSubCategory }) => {
       toast.success(response?.message);
       fetchSubCategory();
     } catch (error) {
-      toast.error(error?.message);
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
     } finally {
       setLoading(false);
     }

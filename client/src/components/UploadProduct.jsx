@@ -204,7 +204,10 @@ const UploadProduct = () => {
       setProduct(initialState)
       setPreview([])
     } catch (error) {
-      toast.error(error?.message);
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
     } finally {
       setUploading(false);
     }

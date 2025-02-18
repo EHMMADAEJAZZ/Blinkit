@@ -44,9 +44,12 @@ const Register = () => {
         confirmPassword: '',
       });
     } catch (error) {
-      
-      setIsError(error?.message);
-        toast.error(error?.message)
+      if(error?.message){
+
+        toast.error(error?.message);
+        setIsError(error?.message);
+      }
+        
     } finally {
       setIsLoading(false);
     }

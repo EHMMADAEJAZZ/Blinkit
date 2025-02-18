@@ -16,7 +16,7 @@ import AddField from './AddField';
 import successAlert from '../utils/successAlert';
 import { useNavigate } from 'react-router-dom';
 
-const EditProduct = ({ data,fetchProduct }) => {
+const EditProduct = ({ data, fetchProduct }) => {
   const [product, setProduct] = useState({
     name: data?.name,
     price: data?.price,
@@ -40,7 +40,7 @@ const EditProduct = ({ data,fetchProduct }) => {
   const { allSubCategories } = useSelector((state) => state.subCategory);
   const [showAddFieldModel, setShowAddFieldModel] = useState(false);
   const [addField, setAddField] = useState('');
- const navigate= useNavigate()
+  const navigate = useNavigate();
   function validateInputs(values) {
     const errors = {};
     if (!values.name) {
@@ -94,7 +94,6 @@ const EditProduct = ({ data,fetchProduct }) => {
         return [...prev, URL.createObjectURL(image)];
       });
     });
-
   };
 
   const handleDeleteImage = (index) => {
@@ -193,10 +192,12 @@ const EditProduct = ({ data,fetchProduct }) => {
       // toast.success(response?.message);
       successAlert(response?.message);
       setPreview(response?.data?.images);
-      fetchProduct()
+      fetchProduct();
       setProduct(data);
     } catch (error) {
-      toast.error(error?.message);
+      if (error?.message) {
+        toast.error(error?.message);
+      }
     } finally {
       setisEditing(false);
     }
@@ -218,9 +219,9 @@ const EditProduct = ({ data,fetchProduct }) => {
     setAddField('');
     setShowAddFieldModel(false);
   };
-  const handleCancel=()=>{
-    navigate(-1)
-  }
+  const handleCancel = () => {
+    navigate(-1);
+  };
   return (
     <section className='w-full'>
       <div className='max-w-3xl  mx-auto my-0 sm:my-3 px-10 py-5 shadow-md shadow-blue-400 rounded'>
@@ -495,8 +496,8 @@ const EditProduct = ({ data,fetchProduct }) => {
                 {isEditing ? 'saving...' : 'save'}
               </button>
               <button
-              type='button'
-              onClick={handleCancel}
+                type='button'
+                onClick={handleCancel}
                 className={` bg-red-600 text-white hover:bg-red-500 px-2 lg:px-10 py-2 lg:py-3 rounded  uppercase text-xs sm:text-sm tracking-widest font-bold ${
                   isEditing
                     ? ' text-white cursor-not-allowed hover:bg-red-400'

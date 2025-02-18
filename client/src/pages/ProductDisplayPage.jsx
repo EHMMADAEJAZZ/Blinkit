@@ -22,7 +22,10 @@ const ProductDisplayPage = () => {
       const response = await productApi.fetchProductDetails(id);
       setProduct(response?.data);
     } catch (error) {
-      toast.error(error?.message);
+     if(error?.message){
+
+        toast.error(error?.message);
+      }
     } finally {
       setisLoading(false);
     }

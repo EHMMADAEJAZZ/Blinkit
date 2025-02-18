@@ -76,7 +76,10 @@ const CheckoutPage = () => {
      fetchOrders()
 
     } catch (error) {
-      toast.error(error?.message);
+      if(error?.message){
+
+        toast.error(error?.message);
+      }
     }
   };
   return (

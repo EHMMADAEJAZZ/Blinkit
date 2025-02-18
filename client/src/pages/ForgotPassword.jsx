@@ -22,7 +22,10 @@ const ForgotPassword = () => {
         toast.success(data?.message)
         setEmail('')
       } catch (error) {
-        toast.error(error?.message)
+        if(error?.message){
+
+        toast.error(error?.message);
+      }
       }finally{
         setIsLoading(false);
 
