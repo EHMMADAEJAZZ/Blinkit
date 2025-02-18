@@ -86,9 +86,13 @@ const Search = () => {
         <div className='mt-7 sm:mt-16 max-h-[65vh] sm:max-h-[65vh] overflow-hidden overflow-y-auto scrollbar-none scroll-smooth grid justify-items-center grid-cols-1 gap-1  sm:grid-cols-3 scroll-none md:grid-cols-4 lg:grid-cols-5 sm:gap-4 lg:gap-5  p-4'>
           
             <>
-              { data && data.length > 0 ? (data?.map((item, index) => (
+              { data && data.length > 0 && (data?.map((item, index) => (
                 <CardProduct key={index} data={item} />
-              ))):(<div><NoData label={message}/></div>)
+              )))
+              }
+            </>
+            <>
+              {  !data.length  && (<NoData label={message}/>)
               }
             </>
           
