@@ -80,6 +80,10 @@ const api = {
     try {
       const response = await Axios.post(`${userEndPoint.users}/logout`);
       localStorage.clear();
+      //reload window
+      window.location.reload();
+      window.location.href = '/';
+
       return response.data;
     } catch (error) {
       throw new Error(error?.response?.data?.message);
