@@ -2,15 +2,11 @@ import { Link } from 'react-router-dom';
 import formatCurrency from '../utils/currencyFormat';
 import validUrl from '../utils/createValidUrl';
 import discountedPrice from '../utils/pricewithDiscount';
-// import { cartApi } from '../common/api';
-// import { toast } from'react-toastify';
-// import { useState } from 'react';
-// import { UseGlobalContext } from '../context/globalContext';
+
 import AddToCart from './AddToCart';
 
 const CardProduct = ({ data }) => {
-  // const [isLoading, setIsLoading] = useState(false)
-//  const {fetchCartItems}= UseGlobalContext()
+
   const url = ` ${validUrl(data?.name)}-${data._id}`;
   const pricewithDiscount = discountedPrice(data?.price, data?.discount);
   

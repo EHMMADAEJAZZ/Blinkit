@@ -1,42 +1,17 @@
 import {useState } from 'react';
-// import { categoryApi } from '../common/api';
-// import { toast } from 'react-toastify';
+;
 import NoData from './NoData';
-// import Spinner from '../UI/Spinner';
 import UpdateCategory from './UpdateCategory';
 import ConfirmBox from './ConfirmBox';
 import CategorySkeleton from '../skeleton/CategorySkeleton';
-// import { useSelector } from 'react-redux';
-// import { setAllCategories } from '../features/category/categorySlice';
+
 
 const Categories = ({categories,isLoading}) => {
-  // const [isLoading, setIsLoading] = useState(false);
   
-  // const [categories, setCategories] = useState([]);
-  // const [error, setError] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
 const [data,setData] = useState({})
-// console.log(categories)
-// const dispatch = useDispatch();
-// const {allCategories,isLoading} = useSelector(state=>state.category)
-//   // const getCategories = async () => {
-//   //   setIsLoading(true);
-//   //   try {
-//   //     const data = await categoryApi.fetchCategories();
-//   //     console.log(data?.message);
-//   //     dispatch(setAllCategories(data?.data));
-//   //     setCategories(allCategories);
-//   //   } catch (error) {
-//   //     toast.error(error?.message);
-//   //     setError(error?.message);
-//   //   } finally {
-//   //     setIsLoading(false);
-//   //   }
-//   // };
-//   useEffect(() => {
-//     setCategories(allCategories);
-//   }, [allCategories]);
+
   const toggleModal = () => {
     setIsOpen(!isOpen);
     window.scrollTo(0, 0);
