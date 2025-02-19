@@ -48,6 +48,7 @@ export const updateCategory = async (req, res, next) => {
   const { categoryId } = req.params;
   const { name, image } = req.body;
   const imagePath = req.file?.path;
+  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
   if (!name) {
     return next(new ApiErrors(400, 'All fields are required'));
   }
