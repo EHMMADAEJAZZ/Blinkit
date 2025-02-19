@@ -38,6 +38,12 @@ app.use(morgan('dev'));
 
 // Set up routes
 // import routes from
+app.options('/api/v1/category', (req, res) => {
+  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
+  res.header('Access-Control-Allow-Methods', 'POST, PUT');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.send();
+});
 
 import userRoute from './routes/user.route.js';
 import adminRoute from './routes/admin.route.js';
