@@ -48,7 +48,7 @@ export const updateCategory = async (req, res, next) => {
   const { categoryId } = req.params;
   const { name, image } = req.body;
   const imagePath = req.file?.path;
-  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
+  res.header('Access-Control-Allow-Origin', 'https://binkeyit-grocery.vercel.app');
   if (!name) {
     return next(new ApiErrors(400, 'All fields are required'));
   }
